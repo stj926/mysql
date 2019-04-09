@@ -1,0 +1,30 @@
+wget http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
+
+rpm -ivh mysql57-community-release-el7-8.noarch.rpm
+
+yum install mysql-server
+
+查看MySQL服务是否已启动:service mysqld status
+
+启动服务:systemctlstartmysqld
+
+grep'temporary password'/var/log/mysqld.log
+
+mysql-uroot-p
+
+SET PASSWORD FOR 'root'@'localhost' = "Root-123";
+
+sakila数据库:
+
+解压
+
+mysql> SOURCE /home/hadoop/桌面/sakila-db/sakila-schema.sql;
+
+mysql> SOURCE /home/hadoop/桌面/sakila-db/sakila-data.sql;
+
+
+
+
+
+SHOW DATABASES;
+USE sakila
