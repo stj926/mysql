@@ -1,19 +1,40 @@
+rpm -qa | grep mysql　　// 检测系统是否自带安装 MySQL
+rpm -e mysql　　// 普通删除模式
+rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
+
 wget http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
-
 rpm -ivh mysql57-community-release-el7-8.noarch.rpm
-
+yum update
 yum install mysql-server
 
-查看MySQL服务是否已启动:service mysqld status
+权限设置：
+chown mysql:mysql -R /var/lib/mysql
 
-启动服务:systemctlstartmysqld
+初始化 MySQL：
+mysqld --initialize
 
+启动服务：
+systemctl start mysqld
+
+查看MySQL服务是否已启动:
+service mysqld status
+
+创建root用户的密码：
+mysqladmin -u root password "new_password";
+
+临时密码：
 grep'temporary password'/var/log/mysqld.log
 
-mysql-uroot-p
+连接Mysql：
+mysql -u root -p
 
 SET PASSWORD FOR 'root'@'localhost' = "Root-123";
 
+
+
+
+
+#########################################################
 sakila数据库:
 
 解压
@@ -21,9 +42,6 @@ sakila数据库:
 mysql> SOURCE /home/hadoop/桌面/sakila-db/sakila-schema.sql;
 
 mysql> SOURCE /home/hadoop/桌面/sakila-db/sakila-data.sql;
-
-
-
 
 
 SHOW DATABASES;
