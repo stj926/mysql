@@ -20,8 +20,8 @@ systemctl start mysqld
 查看MySQL服务是否已启动:
 service mysqld status
 
-创建root用户的密码：
-mysqladmin -u root password "new_password";
+#创建root用户的密码：
+#mysqladmin -u root password "new_password";
 
 临时密码：
 grep'temporary password'/var/log/mysqld.log
