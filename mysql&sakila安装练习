@@ -29,7 +29,7 @@ grep'temporary password'/var/log/mysqld.log
 连接Mysql：
 mysql -u root -p
 
-SET PASSWORD FOR 'root'@'localhost' = "Root-123";
+SET PASSWORD FOR 'root'@'localhost' = "123456";
 
 
 错误处理：
