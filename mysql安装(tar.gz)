@@ -1,3 +1,6 @@
+groupadd mysql
+useradd -g mysql mysql
+
 tar -xvzf mysql-8.0.15-el7-x86_64.tar.gz
 mv mysql-8.0.15-el7-x86_64 /usr/local/mysql
 cd /usr/local
@@ -19,14 +22,18 @@ basedir=/usr/local/mysql
 datadir=/usr/local/mysql/data
 log-error=error.log
 
-初始化：
-/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/
-
 mkdir /tmp/mysql
 chown -R mysql:mysql /tmp/mysql
 
+初始化：
+/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/
+
 启动：
 /usr/local/mysql/support-files/mysql.server start
+
+临时密码在：
+vim /usr/localmysql/data/err.log
+mysql -u root -p
 
 修改密码：
 SET PASSWORD FOR 'root'@'localhost' = "123456";
