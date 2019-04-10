@@ -1,0 +1,32 @@
+tar -xvzf mysql-8.0.15-el7-x86_64.tar.gz
+mv mysql-8.0.15-el7-x86_64 /usr/local/mysql
+cd /usr/local
+mkdir mysql/data
+chown -R mysql:mysql mysql
+添加环境变量：（省略）
+
+添加默认配置文件
+#vim /etc/my.cnf:
+[client]
+port=3306
+socket=/tmp/mysql/mysql.sock
+
+[mysqld]
+port=3306
+user=mysql
+socket=/tmp/mysql/mysql.sock
+basedir=/usr/local/mysql
+datadir=/usr/local/mysql/data
+log-error=error.log
+
+初始化：
+/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/
+
+mkdir /tmp/mysql
+chown -R mysql:mysql /tmp/mysql
+
+启动：
+/usr/local/mysql/support-files/mysql.server start
+
+修改密码：
+SET PASSWORD FOR 'root'@'localhost' = "123456";
