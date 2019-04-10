@@ -32,7 +32,25 @@ mysql -u root -p
 SET PASSWORD FOR 'root'@'localhost' = "Root-123";
 
 
+错误处理：
+[root@localhost ~]# systemctl status mysqld
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since 三 2019-04-10 09:52:29 CST; 14s ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: 38994 ExecStart=/usr/sbin/mysqld $MYSQLD_OPTS (code=exited, status=1/FAILURE)
+  Process: 38971 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+ Main PID: 38994 (code=exited, status=1/FAILURE)
+   Status: "SERVER_BOOTING"
+    Error: 2 (没有那个文件或目录)    
+查看具体错误日志：
+cat /var/log/mysqld.log
 
+在/var/lib/mysql下新建了一个data文件夹
+修改my.cnf文件，
+vim /etc/my.cnf
+datadir=/var/lib/mysql/data
 
 
 #########################################################
