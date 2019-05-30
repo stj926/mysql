@@ -8,8 +8,9 @@ service  mysqld  restart
 登入
 mysql -u root
 
-#修改密码
+#修改密码（新版的mysql数据库下的user表中已经没有Password字段了，而是将加密后的用户密码存储于authentication_string字段）
 update mysql.user  set password=password('root') where user='root'；
+update mysql.user set authentication_string=password("123456") where user="root";
 
 刷新
 flush privileges;
