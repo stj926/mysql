@@ -1,0 +1,7 @@
+在安装 mysqlclient的时候报错 /bin/sh mysql_config not found 因为需要安装 mariadb-devel 
+
+报错error: command ‘gcc‘ failed with exit status 1，缺乏 gcc。
+
+1.yum install gcc mariadb-devel 
+
+2.pip3 install mysqlclient
