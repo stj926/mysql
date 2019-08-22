@@ -1,0 +1,7 @@
+mysql安装
+rpm 见官网
+
+
+mysql卸载
+ rm -rf /var/lib/mysql
+ rm -rf /etc/my.cnf
